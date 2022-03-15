@@ -1,86 +1,83 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import axios from "axios";
-const categorias = [
+
+const clasificacion=[
   {
-    nombre: "Categoria 1",
-    articulos: ["objeto 1", "objeto 2", "objeto 3"],
+    'Clasificacion':'ingreso'
   },
   {
-    nombre: "Categoria 2",
-    articulos: ["objeto 1.x", "objeto 2.x", "objeto 3.x"],
-  },
-];
+    'Clasificacion':'egreso'
+  }
+]
 
-function Categorias() {
-  const [idArticulos, setIdArticulos] = useState(-1);
+class Categorias extends React.Component {
+  state = {
+    Categorias: []
+  }
 
-  const handlerCargarArticulos = function(e) {
-    const opcion = e.target.value;
-    setIdArticulos(opcion);
-  };
-  return (
-    <div>
+  componentDidMount() {
+    let url; //Url backend
+    axios.get(url).then((response) => {
+      this.setState({
+        Categorias: response.data,
+      });
+    });
+  }
+
+  render() {
+    return (
       <div>
         <div>
-          <h2>Categorias</h2>
-          <select
-            name="categorias"
-            id="selCategorias"
-            onClick={handlerCargarArticulos}
-          >
-            <option value={-1}>Seleccione una categoria</option>
-            {categorias.map((item, i) => (
-              <option key={"categoria" + i} value={i}>
-                {item.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <h2>Subcategorias</h2>
-          <select name="articulos" id="selarticulo">
-            {idArticulos > -1 &&
-              categorias[idArticulos].articulos.map((item, i) => (
-                <option key={"articulo" + 1} value="">
-                  {" "}
-                  {item}{" "}
+          <div>
+            <h2>Clasificacion</h2>
+            <select name="Categorias" id="selCategorias">
+              <option value={-1}>Seleccione una clasificacion</option>
+              {clasificacion.map((item, i) => (
+                <option key={"clasificacion" + i} value={i}>
+                  {item.Clasificacion}
                 </option>
               ))}
-          </select>
+            </select>
+          </div>
+          <div>
+            <h2>Categorias</h2>
+            <input type="text" id="txtCategoria" placeholder="categoria" />
+          </div>
+          <div>
+            <h2>Subcategorias</h2>
+            <input
+              type="text"
+              id="txtSubcategoria"
+              placeholder="sub-categoria"
+            />
+          </div>
+        </div>
+        <div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+              <th scope="col">id</th>
+                <th scope="col">Clasificacion</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Subcategorias</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.Categorias.map((value, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{value.id}</td>
+                    <td>{value.clasificacion}</td>
+                    <td>{value.categoria}</td>
+                    <td>{value.sub_categoria}</td>
+                  </tr>
+                );
+              })}       
+            </tbody>
+          </table>
         </div>
       </div>
-      <div>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 export default Categorias;
