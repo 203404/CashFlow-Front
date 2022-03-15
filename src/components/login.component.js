@@ -43,7 +43,7 @@ export default class Login extends Component {
                 <h3>Sign In</h3>
                 <div className="form-group">
                     <label>user address</label>
-                    <input type="text" className="form-control" name='user' placeholder="userName" onChange={this.manejadorChange}/>
+                    <input type="text" className="form-control" name='user' placeholder="Enter username" onChange={this.manejadorChange}/>
                 </div>
                 <div className="form-group">
                     <label>Password</label>
