@@ -1,22 +1,29 @@
 import React from "react";
 import axios from "axios";
 
-const clasificacion=[
+const Clasificacion = [
   {
-    'Clasificacion':'ingreso'
+    Clasificacion: "ingreso",
   },
   {
-    'Clasificacion':'egreso'
-  }
-]
+    Clasificacion: "egreso",
+  },
+];
 
 class Categorias extends React.Component {
-  state = {
-    Categorias: []
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      ObjetoClasificacion: [],
+      clasificacion: null,
+      categorias: "",
+      sub_categoria: "",
+    };
   }
 
   componentDidMount() {
-    let url; //Url backend
+    let url = "http://localhost:3001/api/v1/categorias"; //Url backend
     axios.get(url).then((response) => {
       this.setState({
         Categorias: response.data,
@@ -24,24 +31,60 @@ class Categorias extends React.Component {
     });
   }
 
+  postCategoria = () => {
+    let url = "http://localhost:3001/api/v1/categorias"; //Url backend
+    var postData = {
+      clasificacion: this.state.clasificacion,
+      categoria: this.state.categoria,
+      sub_categoria: this.state.sub_categoria,
+    }
+    axios
+      .post(url, postData, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        alert("Categoria creada");
+      });
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+
+    console.log(event.target.value);
+  };
+
   render() {
     return (
       <div>
         <div>
           <div>
             <h2>Clasificacion</h2>
-            <select name="Categorias" id="selCategorias">
+            <select
+              name="clasificacion"
+              id="selclasificacion"
+              onClick={(e) => e.target.value==='0'?this.setState({clasificacion: "ingreso"}):(e.target.value==='1'?this.setState({clasificacion: "egreso"}):(e.target.value==='-1'?this.setState({clasificacion: null}):null))}
+              //onClick={this.handleChange}
+            >
               <option value={-1}>Seleccione una clasificacion</option>
-              {clasificacion.map((item, i) => (
+              {Clasificacion.map((item, i) => (
                 <option key={"clasificacion" + i} value={i}>
                   {item.Clasificacion}
                 </option>
               ))}
             </select>
           </div>
+          
           <div>
             <h2>Categorias</h2>
-            <input type="text" id="txtCategoria" placeholder="categoria" />
+            <input
+              type="text"
+              id="txtCategoria"
+              name="categoria"
+              placeholder="categoria"
+              onChange={this.handleChange}
+            />
           </div>
           <div>
             <h2>Subcategorias</h2>
@@ -49,21 +92,24 @@ class Categorias extends React.Component {
               type="text"
               id="txtSubcategoria"
               placeholder="sub-categoria"
+              name="sub_categoria"
+              onChange={this.handleChange}
             />
           </div>
+          <button type="submit" className="btn btn-primary btn-block" onClick={this.postCategoria}>Submit</button>
         </div>
         <div>
           <table class="table table-bordered">
             <thead>
               <tr>
-              <th scope="col">id</th>
+                <th scope="col">id</th>
                 <th scope="col">Clasificacion</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Subcategorias</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.Categorias.map((value, index) => {
+              {this.state.ObjetoClasificacion.map((value, index) => {
                 return (
                   <tr key={index}>
                     <td>{value.id}</td>
@@ -72,7 +118,7 @@ class Categorias extends React.Component {
                     <td>{value.sub_categoria}</td>
                   </tr>
                 );
-              })}       
+              })}
             </tbody>
           </table>
         </div>
