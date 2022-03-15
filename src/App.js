@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
+import Categorias from "./components/categorias.component";
 function App() {
   return (<Router>
     <div className="App">
@@ -17,6 +18,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/categorias"}>Categorias</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -27,6 +31,7 @@ function App() {
             <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/categorias" component={Categorias} />
           </Switch>
         </div>
       </div>
