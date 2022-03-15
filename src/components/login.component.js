@@ -5,7 +5,7 @@ export default class Login extends Component {
 
     state={
         form:{
-            'email':'',
+            'user':'',
             'password':''
         },
         error:false,
@@ -29,7 +29,8 @@ export default class Login extends Component {
 
     manejadorBoton=()=>{
         console.log('enviado')
-        let url;
+        let url='http://localhost:3001/api/login';
+        console.log(this.state.form)
         axios.post(url,this.state.form)
         .then(res=>{
             console.log(res);
@@ -41,8 +42,8 @@ export default class Login extends Component {
             <form onSubmit={this.manejadorSubmit}> 
                 <h3>Sign In</h3>
                 <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" name='email' placeholder="Enter email" onChange={this.manejadorChange}/>
+                    <label>user address</label>
+                    <input type="text" className="form-control" name='user' placeholder="userName" onChange={this.manejadorChange}/>
                 </div>
                 <div className="form-group">
                     <label>Password</label>
