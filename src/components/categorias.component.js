@@ -16,7 +16,7 @@ class Categorias extends React.Component {
   }
 
   componentDidMount() {
-    let url; //Url backend
+    let url= 'http://localhost:3001/api/v1/categorias'; //Url backend
     axios.get(url).then((response) => {
       this.setState({
         Categorias: response.data,
