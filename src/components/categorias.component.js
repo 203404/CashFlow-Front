@@ -21,6 +21,9 @@ class Categorias extends React.Component {
       sub_categoria: "",
     };
   }
+  clickId(id){
+    console.log(id);
+  }
 
   componentDidMount() {
     let url = "http://localhost:3001/api/v1/categorias"; //Url backend
@@ -114,7 +117,7 @@ class Categorias extends React.Component {
             <tbody>
               {this.state.ObjetoClasificacion.map((value, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={index} onClick={()=>this.clickId(value.id)}>
                     <td>{value.id}</td>
                     <td>{value.clasificacion}</td>
                     <td>{value.categoria}</td>
