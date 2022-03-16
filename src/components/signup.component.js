@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from "react";;
 export default class SignUp extends Component {
+
+
+    
     render() {
         return (
-            <form>
+                <form>
                 <h3>Sign Up</h3>
                 <div className="form-group">
                     <label>First name</label>
@@ -25,6 +28,7 @@ export default class SignUp extends Component {
                     Already registered <a href="#">sign in?</a>
                 </p>
             </form>
+            
         );
     }
 }
