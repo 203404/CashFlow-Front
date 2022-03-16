@@ -17,7 +17,7 @@ class Flujo extends React.Component {
         this.state = {
             ObjetoFlujo: [],
             id_categoria: "",
-            es_ingreso: null,
+            es_ingreso: false,
             descripcion: "",
             cantidad: 0,
         };
@@ -40,15 +40,15 @@ class Flujo extends React.Component {
             fecha: this.state.fecha,
         }
         console.log(postData)
-        axios
-            .post(url, postData, {
-                headers: { "Content-Type": "application/json" },
-            })
-            .then((response) => {
-                console.log(response)
-                alert("Registro creado");
-                window.location.reload();
-            });
+        // axios
+        //     .post(url, postData, {
+        //         headers: { "Content-Type": "application/json" },
+        //     })
+        //     .then((response) => {
+        //         console.log(response)
+        //         alert("Registro creado");
+        //         window.location.reload();
+        //     });
     };
 
     handleChange = (event) => {
@@ -79,8 +79,8 @@ class Flujo extends React.Component {
                         <h2>Registros</h2>
                         <select
                             name="es_ingreso"
-                            id="selclasificacion"
-                            onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: "No" }) : (e.target.value === '1' ? this.setState({ clasificacion: "egreso" }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null))}
+                            id="seles_ingreso"
+                            onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: true }) : (e.target.value === '1' ? this.setState({ clasificacion: false }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null))}
                         //onClick={this.handleChange}
                         >
                             <option value={-1}>Seleccione una clasificacion</option>
