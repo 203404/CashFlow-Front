@@ -26,7 +26,7 @@ class Categorias extends React.Component {
     let url = "http://localhost:3001/api/v1/categorias"; //Url backend
     axios.get(url).then((response) => {
       this.setState({
-        Categorias: response.data,
+        ObjetoClasificacion: response.data,
       });
     });
   }
@@ -38,12 +38,15 @@ class Categorias extends React.Component {
       categoria: this.state.categoria,
       sub_categoria: this.state.sub_categoria,
     }
+    console.log(postData)
     axios
       .post(url, postData, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
+        console.log(response)
         alert("Categoria creada");
+        window.location.reload();
       });
   };
 
@@ -57,7 +60,7 @@ class Categorias extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         <div>
           <div>
             <h2>Clasificacion</h2>
