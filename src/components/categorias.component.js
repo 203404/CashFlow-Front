@@ -60,7 +60,7 @@ class Categorias extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         <div>
           <div>
             <h2>Clasificacion</h2>
