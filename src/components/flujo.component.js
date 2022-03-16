@@ -64,9 +64,7 @@ class Flujo extends React.Component {
         else return "No";
     }
     cortarFecha(fecha){
-        let fecha1 = fecha;
-        let fechaExtraida = fecha1.substring(0, 10);
-        return fechaExtraida;
+        return fecha.substring(0, 10)
     }
 
     render() {
