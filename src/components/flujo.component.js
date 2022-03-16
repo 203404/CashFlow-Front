@@ -23,7 +23,7 @@ class Flujo extends React.Component {
         };
     }
     componentDidMount() {
-        let url = "http://localhost:3001/api/v1/flujo_efectivo"; //Url backend
+        let url = "http://localhost:3001/api/v1/flujoEfectivos"; //Url backend
         axios.get(url).then((response) => {
             this.setState({
                 ObjetoFlujo: response.data,
@@ -31,7 +31,7 @@ class Flujo extends React.Component {
         });
     }
     postCategoria = () => {
-        let url = "http://localhost:3001/api/v1/flujo_efectivo"; //Url backend
+        let url = "http://localhost:3001/api/v1/flujoEfectivo"; //Url backend
         var postData = {
             id_categoria: this.state.id_categoria,
             es_ingreso: this.state.es_ingreso,
