@@ -97,7 +97,7 @@ class Flujo extends React.Component {
                             type="text"
                             id="txtDescripcion"
                             placeholder="Descripcion"
-                            name="sub_categoria"
+                            name="descripcion"
                             onChange={this.handleChange}
                         />
                     </div>
