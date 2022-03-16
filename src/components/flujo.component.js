@@ -37,7 +37,6 @@ class Flujo extends React.Component {
             es_ingreso: this.state.es_ingreso,
             descripcion: this.state.descripcion,
             cantidad: this.state.cantidad,
-            fecha: this.state.fecha,
         }
         console.log(postData)
          axios
@@ -58,6 +57,12 @@ class Flujo extends React.Component {
 
         console.log(event.target.value);
     };
+    validacion(valor) {
+        if (valor === true){
+            return "Si";
+        }
+        else return "No";
+    }
 
     render() {
         return (
@@ -80,7 +85,7 @@ class Flujo extends React.Component {
                         <select
                             name="es_ingreso"
                             id="seles_ingreso"
-                            onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: true }) : (e.target.value === '1' ? this.setState({ clasificacion: false }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null))}
+                            onClick={(e) => e.target.value === '0' ? this.setState({ es_ingreso: true }) : (e.target.value === '1' ? this.setState({ es_ingreso: false }) : (e.target.value === '-1' ? this.setState({ es_ingreso: null }) : null))}
                         //onClick={this.handleChange}
                         >
                             <option value={-1}>Seleccione una clasificacion</option>
@@ -128,7 +133,7 @@ class Flujo extends React.Component {
                             return (
                                 <tr key={index}>
                                     <td>{value.id_categoria}</td>
-                                    <td>{value.es_ingreso}</td>
+                                    <td>validacion({value.es_ingreso})</td>
                                     <td>{value.descripcion}</td>
                                     <td>{value.cantidad}</td>
                                     <td>{value.fecha}</td>
