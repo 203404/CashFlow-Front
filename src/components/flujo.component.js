@@ -81,14 +81,14 @@ class Flujo extends React.Component {
                         />
                     </div>
                     <div>
-                        <h2>Registros</h2>
+                        <h2>¿Se trata de un ingreso?</h2>
                         <select
                             name="es_ingreso"
                             id="seles_ingreso"
                             onClick={(e) => e.target.value === '0' ? this.setState({ es_ingreso: true }) : (e.target.value === '1' ? this.setState({ es_ingreso: false }) : (e.target.value === '-1' ? this.setState({ es_ingreso: null }) : null))}
                         //onClick={this.handleChange}
                         >
-                            <option value={-1}>Seleccione una clasificacion</option>
+                            <option value={-1}>Seleccione una opcion</option>
                             {Clasificacion.map((item, i) => (
                                 <option key={"clasificacion" + i} value={i}>
                                     {item.Clasificacion}
