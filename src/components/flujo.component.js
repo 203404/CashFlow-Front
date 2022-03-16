@@ -116,10 +116,11 @@ class Flujo extends React.Component {
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">id_categoria</th>
+                            <th scope="col">Es ingreso</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
