@@ -31,7 +31,7 @@ class Flujo extends React.Component {
         });
     }
     postCategoria = () => {
-        let url = "http://localhost:3001/api/v1/categorias"; //Url backend
+        let url = "http://localhost:3001/api/v1/flujo_efectivo"; //Url backend
         var postData = {
             id_categoria: this.state.id_categoria,
             es_ingreso: this.state.es_ingreso,
