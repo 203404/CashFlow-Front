@@ -17,7 +17,7 @@ class Flujo extends React.Component {
         this.state = {
             ObjetoFlujo: [],
             id_categoria: "",
-            es_ingreso: false,
+            es_ingreso: null,
             descripcion: "",
             cantidad: 0,
         };
@@ -40,15 +40,15 @@ class Flujo extends React.Component {
             fecha: this.state.fecha,
         }
         console.log(postData)
-        // axios
-        //     .post(url, postData, {
-        //         headers: { "Content-Type": "application/json" },
-        //     })
-        //     .then((response) => {
-        //         console.log(response)
-        //         alert("Registro creado");
-        //         window.location.reload();
-        //     });
+         axios
+             .post(url, postData, {
+                 headers: { "Content-Type": "application/json" },
+             })
+             .then((response) => {
+                 console.log(response)
+                 alert("Registro creado");
+                 window.location.reload();
+             });
     };
 
     handleChange = (event) => {
