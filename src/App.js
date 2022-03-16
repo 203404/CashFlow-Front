@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import Categorias from "./components/categorias.component";
+import Flujo from "./components/flujo.component";
 function App() {
   return (<Router>
     <div className="App">
@@ -21,6 +22,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/categorias"}>Categorias</Link>
               </li>
+              <li>
+                <Link className="nav-link" to={"/flujo"}>Flujo</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -32,6 +36,7 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/categorias" component={Categorias} />
+            <Route path="/flujo" component={Flujo} />
           </Switch>
         </div>
       </div>
