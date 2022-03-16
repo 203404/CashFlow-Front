@@ -77,19 +77,19 @@ class Registros extends React.Component {
             monto: "",
         };
     }
-    componentDidMount() {
-        //Url backend 
-        let url = "???";
-        axios.get(url).then((response) => {
-            this.setState({
-                ObjetoRegistro: response.data,
-            });
-        });
-    }
+    // componentDidMount() {
+    //     //Url backend 
+    //     let url = "http://localhost:3001/api/v1/indicador";
+    //     axios.get(url).then((response) => {
+    //         this.setState({
+    //             ObjetoRegistro: response.data,
+    //         });
+    //     });
+    // }
 
     postCategoria = () => {
         //Url backend 
-        let url = "???";
+        let url = "http://localhost:3001/api/v1/indicador";
         this.state.numeroSemana = parseFloat(this.state.numeroSemana)
         this.state.monto = parseFloat(this.state.monto)
         var postData = {
@@ -119,7 +119,9 @@ class Registros extends React.Component {
             console.log(response)
             alert("Registro Guardado");
             window.location.reload();
-            });
+            }).catch((err)=>{
+                console.log(err)
+            })
         }
     };
     verificarDatos(noEnviar) {
