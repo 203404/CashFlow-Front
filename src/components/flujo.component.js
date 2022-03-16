@@ -133,7 +133,7 @@ class Flujo extends React.Component {
                             return (
                                 <tr key={index}>
                                     <td>{value.id_categoria}</td>
-                                    <td>validacion({value.es_ingreso})</td>
+                                    <td>{this.validacion(value.es_ingreso)}</td>
                                     <td>{value.descripcion}</td>
                                     <td>{value.cantidad}</td>
                                     <td>{value.fecha}</td>
