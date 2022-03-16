@@ -63,6 +63,11 @@ class Flujo extends React.Component {
         }
         else return "No";
     }
+    cortarFecha(fecha){
+        let fecha1 = fecha;
+        let fechaExtraida = fecha1.substring(0, 10);
+        return fechaExtraida;
+    }
 
     render() {
         return (
@@ -136,7 +141,7 @@ class Flujo extends React.Component {
                                     <td>{this.validacion(value.es_ingreso)}</td>
                                     <td>{value.descripcion}</td>
                                     <td>{value.cantidad}</td>
-                                    <td>{value.fecha}</td>
+                                    <td>{this.cortarFecha(value.fecha)}</td>
                                 </tr>
                             );
                         })}
