@@ -17,7 +17,7 @@ class Flujo extends React.Component {
         this.state = {
             ObjetoCategoria: [],
             ObjetoFlujo: [],
-            id_categoria: "",
+            id_categoria: null,
             es_ingreso: null,
             descripcion: "",
             cantidad: 0,
@@ -80,6 +80,12 @@ class Flujo extends React.Component {
         return fecha.substring(0, 10)
     }
 
+    selectId(e){
+        let result=e.target.value
+        console.log(result)
+        return result;
+    }
+
     render() {
         return (
             <div className="any">
@@ -91,13 +97,14 @@ class Flujo extends React.Component {
                         <select
                             name="id_categoria"
                             id="selid_categoria"
+                            onClick={(e)=>{this.setState({id_categoria:this.selectId(e)})}}
                         //onClick={this.handleChange}
                         >
                             <option value={-1}>Seleccione una opcion</option>
                             {this.state.ObjetoCategoria.map((value, index) => {
                                 return (
-                                    <option key={index} >
-                                        {value.categoria}
+                                    <option key={index}  value={this.state.ObjetoCategoria[index].id}>
+                                        {value.categoria +" / "+ value.sub_categoria}
                                     </option>
                                 );
                             })}
