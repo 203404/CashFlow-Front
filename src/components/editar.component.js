@@ -35,6 +35,7 @@ class Editar extends React.Component{
         .then(response =>{
 
             alert('Datos editados correctamente')
+            window.location="http://localhost:3000/categorias";
             console.log(response);
 
             
