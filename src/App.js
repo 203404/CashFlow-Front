@@ -8,6 +8,7 @@ import Categorias from "./components/categorias.component";
 import Flujo from "./components/flujo.component";
 import Registros from './components/registros.component';
 import Editar from './components/editar.component'
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (<Router>
@@ -50,29 +51,33 @@ function App() {
                 render={(props) => <SignUp{...props} />}
               ></Route>
             {/* <Route path="/sign-up" component={SignUp} /> */}
-            <Route
+
+            <PrivateRoute
               path="/categorias"
               exact
               render={(props) => <Categorias{...props} />}
-            ></Route>
-            {/* <Route path="/categorias" component={Categorias} /> */}
-            <Route
+            ></PrivateRoute>
+            {/* <PrivateRoute path="/categorias" component={Categorias} /> */}
+
+            <PrivateRoute
               path="/flujo"
               exact
               render={(props) => <Flujo{...props} />}
-            ></Route>
-            {/* <Route path="/flujo" component={Flujo} /> */}
-            <Route
+            ></PrivateRoute>
+            {/* <PrivateRoute path="/flujo" component={Flujo} /> */}
+
+            <PrivateRoute
               path="/registros"
               exact
               render={(props) => <Registros{...props} />}
-            ></Route>
-            {/* <Route path="/registros" component={Registros} /> */}
-            <Route
+            ></PrivateRoute>
+            {/* <PrivateRoute path="/registros" component={Registros} /> */}
+
+            <PrivateRoute
               path="/editar/:id"
               exact
               render={(props) => <Editar{...props} />}
-            ></Route>
+            ></PrivateRoute>
             {/* <Route path="/editar:id" component={editar} /> */}
           </Switch>
         </div>
