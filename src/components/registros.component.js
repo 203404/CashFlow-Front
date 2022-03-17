@@ -70,9 +70,9 @@ class Registros extends React.Component {
         super(props);
         this.state = {
             ObjetoRegistro: [],
-            tipoRegistro: "",
-            numeroSemana: "",
-            razonSocial: "",
+            tipo_registro: "",
+            num_sem: "",
+            descrip: "",
             mes: "",
             monto: "",
         };
@@ -90,19 +90,19 @@ class Registros extends React.Component {
     postCategoria = () => {
         //Url backend 
         let url = "http://localhost:3001/api/v1/indicador";
-        this.state.numeroSemana = parseFloat(this.state.numeroSemana)
+        this.state.num_sem = parseFloat(this.state.num_sem)
         this.state.monto = parseFloat(this.state.monto)
         var postData = {
-            tipoRegistro: this.state.tipoRegistro,
-            numeroSemana: this.state.numeroSemana,
-            razonSocial: this.state.razonSocial,
+            tipo_registro: this.state.tipo_registro,
+            num_sem: this.state.num_sem,
+            descrip: this.state.descrip,
             mes: this.state.mes,
             monto: this.state.monto,
         }
 
-        console.log("tipoRegistro: " + typeof (this.state.tipoRegistro))
-        console.log("numeroSemana: " + typeof (this.state.numeroSemana))
-        console.log("razonSocial: " + typeof (this.state.razonSocial))
+        console.log("tipo_registro: " + typeof (this.state.tipo_registro))
+        console.log("num_sem: " + typeof (this.state.num_sem))
+        console.log("descrip: " + typeof (this.state.descrip))
         console.log("mes: " + typeof (this.state.mes))
         console.log("monto: " + typeof (this.state.monto))
 
@@ -126,17 +126,17 @@ class Registros extends React.Component {
     };
     verificarDatos(noEnviar) {
         var alerta="";
-        if (!this.state.tipoRegistro) {
+        if (!this.state.tipo_registro) {
             noEnviar = false
             alerta+="Dato Tipo de Registro introducido no correcto\n"
         }
 
-        if (!this.state.numeroSemana) {
+        if (!this.state.num_sem) {
             noEnviar = false
             alerta+="Dato Numero de Semana introducido no correcto\n"
         } 
 
-        if (!this.state.razonSocial) {
+        if (!this.state.descrip) {
             noEnviar = false
             alerta+="Dato Razón Social introducido no correcto\n"
         }
@@ -180,7 +180,7 @@ class Registros extends React.Component {
         }
         return resultado;
     }
-    cambioTipoRegistro(e) {
+    cambiotipo_registro(e) {
         let resultado;
         switch (e.target.value) {
             case "0":
@@ -250,9 +250,9 @@ class Registros extends React.Component {
                     <div>
                         <h2><text>{'Registro de \t'}</text>
                             <select
-                                name="tipoRegistro"
+                                name="tipo_registro"
                                 id="selRegistro"
-                                onChange={(e) => this.setState({ tipoRegistro: this.cambioTipoRegistro(e) })}
+                                onChange={(e) => this.setState({ tipo_registro: this.cambiotipo_registro(e) })}
                             >
                                 <option value={-1}>- - - - - - - - - - - - - </option>
                                 {Registro.map((item, i) => (
@@ -266,16 +266,16 @@ class Registros extends React.Component {
                         <div>
                             <h2>Periodo</h2>
                             <select
-                                name="numeroSemana"
-                                id="numeroSemana"
+                                name="num_sem"
+                                id="num_sem"
 
-                                onChange={(e) => this.setState({ numeroSemana: this.cambioSemana(e) })}
+                                onChange={(e) => this.setState({ num_sem: this.cambioSemana(e) })}
 
                             >
 
                                 <option value={-1}>Numero de Semana</option>
                                 {NSemana.map((item, i) => (
-                                    <option key={"numeroSemana" + i} value={i}>
+                                    <option key={"num_sem" + i} value={i}>
                                         {item.NSemana}
                                     </option>
                                 ))}
@@ -298,8 +298,8 @@ class Registros extends React.Component {
                             <h2>Razón Social</h2>
                             <input
                                 type="text"
-                                id="txtRazonSocial"
-                                name="razonSocial"
+                                id="txtdescrip"
+                                name="descrip"
                                 placeholder="Razón Social"
                                 onChange={this.handleChange}
                             />

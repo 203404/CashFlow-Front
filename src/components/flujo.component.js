@@ -120,14 +120,14 @@ class Flujo extends React.Component {
 
 
                     <div>
-                        <h2>id Categoria</h2>
+                        <h2>Categoria</h2>
                         <select
                             name="id_categoria"
                             id="selid_categoria"
                             onClick={(e)=>{this.setState({id_categoria:this.selectId(e)})}}
                         //onClick={this.handleChange}
                         >
-                            <option value={-1}>Seleccione una opcion</option>
+                            <option value={-1}>Seleccione una categoria / subcategoria</option>
                             {this.state.ObjetoCategoria.map((value, index) => {
                                 return (
                                     <option key={index}  value={this.state.ObjetoCategoria[index].id}>
@@ -145,7 +145,7 @@ class Flujo extends React.Component {
                             onClick={(e) => e.target.value === '0' ? this.setState({ es_ingreso: true }) : (e.target.value === '1' ? this.setState({ es_ingreso: false }) : (e.target.value === '-1' ? this.setState({ es_ingreso: null }) : null))}
                         //onClick={this.handleChange}
                         >
-                            <option value={-1}>Seleccione una opcion</option>
+                            <option value={-1}>¿es ingreso?</option>
                             {Clasificacion.map((item, i) => (
                                 <option key={"clasificacion" + i} value={i}>
                                     {item.Clasificacion}
@@ -158,7 +158,7 @@ class Flujo extends React.Component {
                         <input
                             type="text"
                             id="txtDescripcion"
-                            placeholder="Descripcion"
+                            placeholder="ingrese una descripción"
                             name="descripcion"
                             onChange={this.handleChange}
                         />
@@ -168,7 +168,7 @@ class Flujo extends React.Component {
                         <input
                             type="number"
                             id="txtCantiad"
-                            placeholder="Cantidad"
+                            placeholder="ingresa la cantidad"
                             name="cantidad"
                             onChange={this.handleChange}
                         />
