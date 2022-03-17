@@ -52,6 +52,9 @@ class Flujo extends React.Component {
             cantidad: this.state.cantidad,
         }
         console.log(postData)
+        let correctos=true; //Agregado por Lorenzo
+        correctos=this.comprobarTipos(correctos)//Agregado por Lorenzo
+        if(correctos){//Agregado por Lorenzo
         axios
             .post(url, postData, {
                 headers: { "Content-Type": "application/json" },
@@ -61,6 +64,7 @@ class Flujo extends React.Component {
                 alert("Registro creado");
                 window.location.reload();
             });
+        }
     };
 
     handleChange = (event) => {
@@ -84,6 +88,29 @@ class Flujo extends React.Component {
         let result=e.target.value
         console.log(result)
         return result;
+    }
+    comprobarTipos(correctos){ //Agregado por Lorenzo
+        let alerta="";
+        if(!this.state.id_categoria){
+            correctos=false;
+            alerta+="Datos ingresados en 'id Categoria' no validos\n"
+        }
+        if(!this.state.es_ingreso){
+            correctos=false;
+            alerta+="Datos ingresados en '¿Se trata de un Ingreso?' no validos\n"
+        }
+        if(!this.state.descripcion){
+            correctos=false;
+            alerta+="Datos ingresados en Descripción no validos\n"
+        }
+        if(!this.state.cantidad){
+            correctos=false;
+            alerta+="Datos ingresados en Cantidad no validos\n"
+        }
+        if(!correctos){
+            alert(alerta)
+        }
+        return correctos;
     }
 
     render() {
@@ -139,7 +166,7 @@ class Flujo extends React.Component {
                     <div>
                         <h2>Cantidad</h2>
                         <input
-                            type="bigint"
+                            type="number"
                             id="txtCantiad"
                             placeholder="Cantidad"
                             name="cantidad"
