@@ -11,7 +11,7 @@ const Clasificacion = [
 ];
 
 class Categorias extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class Categorias extends React.Component {
       sub_categoria: "",
     };
   }
-  clickId(id){
+  clickId(id) {
     console.log(id);
     this.props.history.push(`/editar/${id}`);
   }
@@ -43,17 +43,40 @@ class Categorias extends React.Component {
       sub_categoria: this.state.sub_categoria,
     }
     console.log(postData)
-    axios
-      .post(url, postData, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((response) => {
-        console.log(response)
-        alert("Categoria creada");
-        window.location.reload();
-      });
-  };
+    var correcto = true;
+    correcto=this.comprobarDatos(correcto)
+    if (correcto) {
+      axios
+        .post(url, postData, {
+          headers: { "Content-Type": "application/json" },
+        })
+        .then((response) => {
+          console.log(response)
+          alert("Categoria creada");
+          window.location.reload();
+        });
+        
+    }
 
+  };
+  comprobarDatos(correcto) {
+    var alerta = "";
+    if (!this.state.clasificacion) {
+      alerta += "Datos introducidos Casificacion incorrectos\n"
+      correcto = false;
+    }
+    if (!this.state.categoria) {
+      alerta += "Datos introducidos en Categoria incorrectos\n"
+      correcto = false;
+    }
+    if (!this.state.sub_categoria) {
+      alerta += "Datos introducidos en Sub Categoria incorrectos\n"
+      correcto = false;
+    }
+    if(!correcto){
+      alert(alerta)
+    }
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -71,8 +94,8 @@ class Categorias extends React.Component {
             <select
               name="clasificacion"
               id="selclasificacion"
-              onClick={(e) => e.target.value==='0'?this.setState({clasificacion: "ingreso"}):(e.target.value==='1'?this.setState({clasificacion: "egreso"}):(e.target.value==='-1'?this.setState({clasificacion: null}):null))}
-              //onClick={this.handleChange}
+              onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: "ingreso" }) : (e.target.value === '1' ? this.setState({ clasificacion: "egreso" }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null))}
+            //onClick={this.handleChange}
             >
               <option value={-1}>Seleccione una clasificacion</option>
               {Clasificacion.map((item, i) => (
@@ -82,7 +105,7 @@ class Categorias extends React.Component {
               ))}
             </select>
           </div>
-          
+
           <div>
             <h2>Categorias</h2>
             <input
@@ -118,7 +141,7 @@ class Categorias extends React.Component {
             <tbody>
               {this.state.ObjetoClasificacion.map((value, index) => {
                 return (
-                  <tr key={index} onClick={()=>this.clickId(value.id)}>
+                  <tr key={index} onClick={() => this.clickId(value.id)}>
                     <td>{value.id}</td>
                     <td>{value.clasificacion}</td>
                     <td>{value.categoria}</td>
