@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default class Login extends Component {
 
+export default class Login extends Component {
+    
     state={
         form:{
             'user':'',
@@ -28,12 +30,22 @@ export default class Login extends Component {
     }
 
     manejadorBoton=()=>{
+        
         console.log('enviado')
-        let url='http://localhost:3001/api/login';
+        let url='http://localhost:3001/api/v1/login';
         console.log(this.state.form)
         axios.post(url,this.state.form)
         .then(res=>{
+            if (res.data==='Las credenciales no son correctas'){
+                alert(res.data)
+            }else{
+                alert('Login correcto')
+                localStorage.setItem('id',true)
+                window.location="http://localhost:3000/categorias";
+            }
             console.log(res);
+        }).catch((err)=>{
+            console.log(err)
         })
     }
 

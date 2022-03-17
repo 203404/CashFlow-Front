@@ -3,8 +3,7 @@ import React from "react";
 
 export default function PrivateRoute(props){
 
-    const user = null;
-    if(!user) return <Redirect to="/" />
+    if(!localStorage.getItem("id")) return <Redirect to="/" />
 
     return(
         <Route {... props}/>
