@@ -15,6 +15,7 @@ class Flujo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            ObjetoCategoria: [],
             ObjetoFlujo: [],
             id_categoria: "",
             es_ingreso: null,
@@ -23,10 +24,22 @@ class Flujo extends React.Component {
         };
     }
     componentDidMount() {
+        this.cargarFlujos();
+        this.cargarCategorias();
+    }
+    cargarFlujos = () => {
         let url = "http://localhost:3001/api/v1/flujoEfectivos"; //Url backend
         axios.get(url).then((response) => {
             this.setState({
                 ObjetoFlujo: response.data,
+            });
+        });
+    }
+    cargarCategorias = () => {
+        let url = "http://localhost:3001/api/v1/categorias"; //Url backend
+        axios.get(url).then((response) => {
+            this.setState({
+                ObjetoCategoria: response.data,
             });
         });
     }
@@ -39,15 +52,15 @@ class Flujo extends React.Component {
             cantidad: this.state.cantidad,
         }
         console.log(postData)
-         axios
-             .post(url, postData, {
-                 headers: { "Content-Type": "application/json" },
-             })
-             .then((response) => {
-                 console.log(response)
-                 alert("Registro creado");
-                 window.location.reload();
-             });
+        axios
+            .post(url, postData, {
+                headers: { "Content-Type": "application/json" },
+            })
+            .then((response) => {
+                console.log(response)
+                alert("Registro creado");
+                window.location.reload();
+            });
     };
 
     handleChange = (event) => {
@@ -58,12 +71,12 @@ class Flujo extends React.Component {
         console.log(event.target.value);
     };
     validacion(valor) {
-        if (valor === true){
+        if (valor === true) {
             return "Si";
         }
         else return "No";
     }
-    cortarFecha(fecha){
+    cortarFecha(fecha) {
         return fecha.substring(0, 10)
     }
 
@@ -71,17 +84,24 @@ class Flujo extends React.Component {
         return (
             <div className="any">
                 <div>
-                    
+
 
                     <div>
                         <h2>id Categoria</h2>
-                        <input
-                            type="text"
-                            id="txtCategoria"
+                        <select
                             name="id_categoria"
-                            placeholder="id Categoria"
-                            onChange={this.handleChange}
-                        />
+                            id="selid_categoria"
+                        //onClick={this.handleChange}
+                        >
+                            <option value={-1}>Seleccione una opcion</option>
+                            {this.state.ObjetoCategoria.map((value, index) => {
+                                return (
+                                    <option key={index} >
+                                        {value.id}
+                                    </option>
+                                );
+                            })}
+                        </select>
                     </div>
                     <div>
                         <h2>¿Se trata de un ingreso?</h2>

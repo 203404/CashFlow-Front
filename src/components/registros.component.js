@@ -245,7 +245,7 @@ class Registros extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="any">
                 <div>
                     <div>
                         <h2><text>{'Registro de \t'}</text>
