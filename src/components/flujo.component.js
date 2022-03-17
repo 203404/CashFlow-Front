@@ -97,7 +97,7 @@ class Flujo extends React.Component {
                             {this.state.ObjetoCategoria.map((value, index) => {
                                 return (
                                     <option key={index} >
-                                        {value.id}
+                                        {value.categoria}
                                     </option>
                                 );
                             })}
