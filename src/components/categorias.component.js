@@ -23,6 +23,7 @@ class Categorias extends React.Component {
   }
   clickId(id){
     console.log(id);
+    this.props.history.push(`/editar/${id}`);
   }
 
   componentDidMount() {
