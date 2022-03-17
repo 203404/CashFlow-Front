@@ -64,8 +64,8 @@ class Categorias extends React.Component {
 
   render() {
     return (
-      <div >
-        <div>
+      <div className="any">
+        <div className="formC">
           <div>
             <h2>Clasificacion</h2>
             <select

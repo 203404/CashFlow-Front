@@ -6,6 +6,8 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import Categorias from "./components/categorias.component";
 import Flujo from "./components/flujo.component";
+import Registros from './components/registros.component';
+
 function App() {
   return (<Router>
     <div className="App">
@@ -25,6 +27,9 @@ function App() {
               <li>
                 <Link className="nav-link" to={"/flujo"}>Flujo</Link>
               </li>
+              <li>
+                <Link className="nav-link" to={"/registros"}>Indicadores</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -37,6 +42,7 @@ function App() {
             <Route path="/sign-up" component={SignUp} />
             <Route path="/categorias" component={Categorias} />
             <Route path="/flujo" component={Flujo} />
+            <Route path="/registros" component={Registros} />
           </Switch>
         </div>
       </div>

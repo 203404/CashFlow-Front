@@ -65,3 +65,10 @@ body, html, .App, #root, .auth-wrapper {
   color: #167bff;
 }
 
+.any{
+  height: 500px;
+  overflow-y: scroll;
+};
+
+
+
