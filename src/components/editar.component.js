@@ -1,20 +1,25 @@
 import React from 'react'
 import axios from 'axios'
+import {useHistory} from "react-router-dom";
 
-class editar extends React.Component{
-
+class Editar extends React.Component{
+    
     state = {
         form:{
+            'id':'',
             'clasificacion': '',
-            'categorias': '',
+            'categoria': '',
             'sub_categoria': '',
         },
         error:false,
         errorMsg:'',    
     }
 
-    manejadorChange = async e=>{
-        await this.setState({
+    
+
+    manejadorChange =  e=>{
+        console.log(e.target)
+         this.setState({
             form:{
                 ...this.state.form,
                 [e.target.name]: e.target.value
@@ -25,56 +30,67 @@ class editar extends React.Component{
     }
 
     put = () => {
-        let url = "http://localhost:3001/api/v1/categorias/" //Url backend
+        let url = "http://localhost:3001/api/v1/categoria" //Url backend
         axios.put(url, this.state.form)
         .then(response =>{
+
+            alert('Datos editados correctamente')
             console.log(response);
+
+            
+
+        }).catch((err)=>{
+            alert(err)
+            console.log(err)
         })
     }
 
     manejadorSumbit = e =>{
         e.preventDefault();
-        this.put();
+        this.put()
     }
 
     componentDidMount(){
-        let categoriaId = this.props.match.params.id;
-        let url = "http://localhost:3001/api/v1/categorias"; //Url backend
+        const { match: { params } } = this.props;
+        
+        let url = "http://localhost:3001/api/v1/categoria/"+params.id; //Url backend
+        // alert('holaaaaaaa')
         axios.get(url)
         .then((response) => {
             console.log(response)
             this.setState({
                 form:{
-                    'clasificacion': response.data[0].clasificacion,
-                    'categorias': response.data[0].categoria,
-                    'sub_categoria': response.data[0].sub_categoria,
+                    'id':params.id,
+                    'clasificacion': response.data.clasificacion,
+                    'categoria': response.data.categoria,
+                    'sub_categoria': response.data.sub_categoria,
                 }
             })
         });
     }
 
 
-    render(){const form = this.state.form
+    render(){const form =this.state.form
         return(
             <div>
                 <h1>Editar Categoria</h1>
                 <form onSubmit={this.manejadorSumbit}>
                 <div className="form-group">
                         <label>Clasificacion</label>
-                        <input type="text" className="form-control" placeholder="Clasificacion" value={form.clasificacion} onChange={manejadorChange}/>
+                        <input type="text" className="form-control" name='clasificacion' placeholder="Clasificacion" value={form.clasificacion} onChange={this.manejadorChange}/>
                     </div>
                     <div className="form-group">
                         <label>Categoria</label>
-                        <input type="text" className="form-control" placeholder="Categoria" value={form.categorias} onChange={manejadorChange} />
+                        <input type="text" className="form-control" name='categoria' placeholder="Categoria" value={form.categoria} onChange={this.manejadorChange} />
                     </div>
                     <div className="form-group">
                         <label>Sub Categoria</label>
-                        <input type="text" className="form-control" placeholder="Sub Categoria" value={form.sub_categoria} onChange={manejadorChange} />
+                        <input type="text" className="form-control" name='sub_categoria' placeholder="Sub Categoria" value={form.sub_categoria} onChange={this.manejadorChange} />
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={()=>this.put()}>Guardar</button>
+                    <button type="submit" className="btn btn-primary" >Guardar</button>
                 </form>
             </div>
         )
     }
 }
-export default editar
+export default Editar

@@ -21,10 +21,12 @@ class Categorias extends React.Component {
       sub_categoria: "",
     };
   }
+  
   clickId(id) {
     console.log(id);
     this.props.history.push(`/editar/${id}`);
   }
+  
 
   componentDidMount() {
     let url = "http://localhost:3001/api/v1/categorias"; //Url backend
