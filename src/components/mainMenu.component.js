@@ -1,6 +1,6 @@
 import React from "react";
 
-class Sidebar extends React.Component {
+class MainMenu extends React.Component {
     render() {
         return (
             <div className="any">
@@ -21,4 +21,4 @@ class Sidebar extends React.Component {
         );
     }
 }
-export default Sidebar;
+export default MainMenu;

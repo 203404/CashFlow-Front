@@ -9,6 +9,7 @@ import Flujo from "./components/flujo.component";
 import Registros from './components/registros.component';
 import Editar from './components/editar.component'
 import PrivateRoute from './components/PrivateRoute';
+import MainMenu from "./components/mainMenu.component";
 
 function App() {
   return (<Router>
@@ -79,6 +80,12 @@ function App() {
               render={(props) => <Editar{...props} />}
             ></PrivateRoute>
             {/* <Route path="/editar:id" component={editar} /> */}
+            <PrivateRoute
+              path="/mainMenu"
+              exact
+              render={(props) => <MainMenu{...props} />}
+            ></PrivateRoute>
+            {/* <Route path="/mainMenu:id" component={mainMenu} /> */}
           </Switch>
         </div>
       </div>
