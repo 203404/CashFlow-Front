@@ -6,7 +6,10 @@ const Clasificacion = [
     Clasificacion: "ingreso",
   },
   {
-    Clasificacion: "egreso",
+    Clasificacion: "Costo-venta",
+  },
+  {
+    Clasificacion: "Gasto-AOC",
   },
 ];
 
@@ -97,31 +100,19 @@ class Categorias extends React.Component {
       <div className="any">
         <div className="formC">
           <div>
-            <h2>Clasificacion</h2>
+            <h2>Categorias</h2>
             <select
-              name="clasificacion"
-              id="selclasificacion"
-              onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: "ingreso" }) : (e.target.value === '1' ? this.setState({ clasificacion: "egreso" }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null))}
-            //onClick={this.handleChange}
+              name="categoria"
+              id="txtCategoria"
+              onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: "ingreso" }) : (e.target.value === '1' ? this.setState({ clasificacion: "Costo-venta" }) : (e.target.value === '2' ? this.setState({ clasificacion: "Gasto-AOC" }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null)))}
             >
-              <option value={-1}>Seleccione una clasificacion</option>
+              <option value={-1}>Seleccione una categoria</option>
               {Clasificacion.map((item, i) => (
                 <option key={"clasificacion" + i} value={i}>
                   {item.Clasificacion}
                 </option>
               ))}
             </select>
-          </div>
-
-          <div>
-            <h2>Categorias</h2>
-            <input
-              type="text"
-              id="txtCategoria"
-              name="categoria"
-              placeholder="categoria"
-              onChange={this.handleChange}
-            />
           </div>
           <div>
             <h2>Subcategorias</h2>
@@ -150,7 +141,6 @@ class Categorias extends React.Component {
                 return (
                   <tr key={index} onClick={() => this.clickId(value.id)}>
                     <td>{value.id}</td>
-                    <td>{value.clasificacion}</td>
                     <td>{value.categoria}</td>
                     <td>{value.sub_categoria}</td>
                   </tr>
