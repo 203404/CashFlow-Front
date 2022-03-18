@@ -19,8 +19,7 @@ class Categorias extends React.Component {
     super(props);
     this.state = {
       ObjetoClasificacion: [],
-      clasificacion: null,
-      categorias: "",
+      categoria: "",
       sub_categoria: "",
     };
   }
@@ -68,10 +67,6 @@ class Categorias extends React.Component {
   };
   comprobarDatos(correcto) {
     var alerta = "";
-    if (!this.state.clasificacion) {
-      alerta += "Datos introducidos Casificacion incorrectos\n"
-      correcto = false;
-    }
     if (!this.state.categoria) {
       alerta += "Datos introducidos en Categoria incorrectos\n"
       correcto = false;
@@ -104,7 +99,7 @@ class Categorias extends React.Component {
             <select
               name="categoria"
               id="txtCategoria"
-              onClick={(e) => e.target.value === '0' ? this.setState({ clasificacion: "ingreso" }) : (e.target.value === '1' ? this.setState({ clasificacion: "Costo-venta" }) : (e.target.value === '2' ? this.setState({ clasificacion: "Gasto-AOC" }) : (e.target.value === '-1' ? this.setState({ clasificacion: null }) : null)))}
+              onClick={(e) => e.target.value === '0' ? this.setState({ categoria: "ingreso" }) : (e.target.value === '1' ? this.setState({ categoria: "Costo-venta" }) : (e.target.value === '2' ? this.setState({ categoria: "Gasto-AOC" }) : (e.target.value === '-1' ? this.setState({ categoria: null }) : null)))}
             >
               <option value={-1}>Seleccione una categoria</option>
               {Clasificacion.map((item, i) => (
@@ -131,7 +126,6 @@ class Categorias extends React.Component {
             <thead>
               <tr>
                 <th scope="col">id</th>
-                <th scope="col">Clasificacion</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Subcategorias</th>
               </tr>
