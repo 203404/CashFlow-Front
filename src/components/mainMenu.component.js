@@ -1,22 +1,22 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class MainMenu extends React.Component {
+
     render() {
         return (
-            <div className="any">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td>Categoria</td>
-                        </tr>
-                        <tr>
-                            <td>Flujo</td>
-                        </tr>
-                        <tr>
-                            <td>Hola</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div >
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to={"/categorias"}>Categorias</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={"/flujo"}>Flujo de efectivo</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={"/registros"}>Indicadores</Link>
+                    </li>
+                </ul>
             </div>
         );
     }

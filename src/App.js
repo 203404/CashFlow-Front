@@ -14,29 +14,6 @@ import MainMenu from "./components/mainMenu.component";
 function App() {
   return (<Router>
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={"/"}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/categorias"}>Categorias</Link>
-              </li>
-              <li>
-                <Link className="nav-link" to={"/flujo"}>Flujo</Link>
-              </li>
-              <li>
-                <Link className="nav-link" to={"/registros"}>Indicadores</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
       <div className="auth-wrapper">
         <div className="auth-inner">
           <Switch>
