@@ -58,6 +58,8 @@ class Categorias extends React.Component {
           window.location.reload();
         });
         
+    }else{
+      console.log('Error ')
     }
 
   };
@@ -76,8 +78,11 @@ class Categorias extends React.Component {
       correcto = false;
     }
     if(!correcto){
+
       alert(alerta)
     }
+
+    return correcto;
   }
   handleChange = (event) => {
     this.setState({

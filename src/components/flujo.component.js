@@ -90,12 +90,14 @@ class Flujo extends React.Component {
         return result;
     }
     comprobarTipos(correctos){ //Agregado por Lorenzo
+        console.log(this.state.es_ingreso)
         let alerta="";
         if(!this.state.id_categoria){
             correctos=false;
             alerta+="Datos ingresados en 'id Categoria' no validos\n"
         }
-        if(!this.state.es_ingreso){
+        if(this.state.es_ingreso==null){
+
             correctos=false;
             alerta+="Datos ingresados en '¿Se trata de un Ingreso?' no validos\n"
         }
