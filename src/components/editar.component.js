@@ -75,6 +75,49 @@ class Editar extends React.Component {
     });
   }
 
+  changecategoria=(e)=>{
+    const i=e.target.value
+    console.log(i);
+    switch (i) {
+      case "0":
+        this.setState({
+          form: {
+            ...this.state.form,
+            categoria : "Ingreso",
+          },
+        });
+        
+        break;
+      case "1":
+        this.setState({
+          form: {
+            ...this.state.form,
+            categoria : "Costo-venta",
+          },
+        });
+        
+        break;
+      case "2":
+        this.setState({
+          form: {
+            ...this.state.form,
+            categoria : "Gasto-AOC",
+          },
+        });
+        
+        break;
+    
+      default:
+        this.setState({
+          form: {
+            ...this.state.form,
+            categoria : null,
+          },
+        });
+        break;
+    }
+  }
+
   render() {
     const form = this.state.form;
     return (
@@ -86,7 +129,7 @@ class Editar extends React.Component {
             <select
               name="categoria"
               id="txtCategoria"
-              onClick={(e) => e.target.value === '0' ? this.setState({ categoria: "ingreso" }) : (e.target.value === '1' ? this.setState({ categoria: "Costo-venta" }) : (e.target.value === '2' ? this.setState({ categoria: "Gasto-AOC" }) : (e.target.value === '-1' ? this.setState({ categoria: null }) : null)))}
+              onClick={(e) => this.changecategoria(e)}
             >
               <option value={-1}>Seleccione una categoria</option>
               {Categorias.map((item, i) => (
