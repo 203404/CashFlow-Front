@@ -21,6 +21,7 @@ class Flujo extends React.Component {
             es_ingreso: null,
             descripcion: "",
             cantidad: 0,
+            aux:null,
         };
     }
     componentDidMount() {
@@ -52,18 +53,18 @@ class Flujo extends React.Component {
             cantidad: this.state.cantidad,
         }
         console.log(postData)
-        let correctos=true; //Agregado por Lorenzo
-        correctos=this.comprobarTipos(correctos)//Agregado por Lorenzo
-        if(correctos){//Agregado por Lorenzo
-        axios
-            .post(url, postData, {
-                headers: { "Content-Type": "application/json" },
-            })
-            .then((response) => {
-                console.log(response)
-                alert("Registro creado");
-                window.location.reload();
-            });
+        let correctos = true; //Agregado por Lorenzo
+        correctos = this.comprobarTipos(correctos)//Agregado por Lorenzo
+        if (correctos) {//Agregado por Lorenzo
+            axios
+                .post(url, postData, {
+                    headers: { "Content-Type": "application/json" },
+                })
+                .then((response) => {
+                    console.log(response)
+                    alert("Registro creado");
+                    window.location.reload();
+                });
         }
     };
 
@@ -84,32 +85,32 @@ class Flujo extends React.Component {
         return fecha.substring(0, 10)
     }
 
-    selectId(e){
-        let result=e.target.value
+    selectId(e) {
+        let result = e.target.value
         console.log(result)
         return result;
     }
-    comprobarTipos(correctos){ //Agregado por Lorenzo
+    comprobarTipos(correctos) { //Agregado por Lorenzo
         console.log(this.state.es_ingreso)
-        let alerta="";
-        if(!this.state.id_categoria){
-            correctos=false;
-            alerta+="Datos ingresados en 'id Categoria' no validos\n"
+        let alerta = "";
+        if (!this.state.id_categoria) {
+            correctos = false;
+            alerta += "Datos ingresados en 'Categoria' no validos\n"
         }
-        if(this.state.es_ingreso==null){
+        if (this.state.es_ingreso == null) {
 
-            correctos=false;
-            alerta+="Datos ingresados en '¿Se trata de un Ingreso?' no validos\n"
+            correctos = false;
+            alerta += "Datos ingresados en '¿Se trata de un Ingreso?' no validos\n"
         }
-        if(!this.state.descripcion){
-            correctos=false;
-            alerta+="Datos ingresados en Descripción no validos\n"
+        if (!this.state.descripcion) {
+            correctos = false;
+            alerta += "Datos ingresados en Descripción no validos\n"
         }
-        if(!this.state.cantidad){
-            correctos=false;
-            alerta+="Datos ingresados en Cantidad no validos\n"
+        if (!this.state.cantidad) {
+            correctos = false;
+            alerta += "Datos ingresados en Cantidad no validos\n"
         }
-        if(!correctos){
+        if (!correctos) {
             alert(alerta)
         }
         return correctos;
@@ -119,26 +120,6 @@ class Flujo extends React.Component {
         return (
             <div className="any">
                 <div>
-
-
-                    <div>
-                        <h2>Categoria</h2>
-                        <select
-                            name="id_categoria"
-                            id="selid_categoria"
-                            onClick={(e)=>{this.setState({id_categoria:this.selectId(e)})}}
-                        //onClick={this.handleChange}
-                        >
-                            <option value={-1}>Seleccione una categoria / subcategoria</option>
-                            {this.state.ObjetoCategoria.map((value, index) => {
-                                return (
-                                    <option key={index}  value={this.state.ObjetoCategoria[index].id}>
-                                        {value.categoria +" / "+ value.sub_categoria}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </div>
                     <div>
                         <h2>¿Se trata de un ingreso?</h2>
                         <select
@@ -147,12 +128,58 @@ class Flujo extends React.Component {
                             onClick={(e) => e.target.value === '0' ? this.setState({ es_ingreso: true }) : (e.target.value === '1' ? this.setState({ es_ingreso: false }) : (e.target.value === '-1' ? this.setState({ es_ingreso: null }) : null))}
                         //onClick={this.handleChange}
                         >
+                            
                             <option value={-1}>¿es ingreso?</option>
                             {Clasificacion.map((item, i) => (
                                 <option key={"clasificacion" + i} value={i}>
                                     {item.Clasificacion}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+                    <div>
+                        <h2>Categoria</h2>
+                        <select
+                            name="id_categoria"
+                            id="selid_categoria"
+                            onClick={(e) => { this.setState({ id_categoria: this.selectId(e) }) }}
+                        //onClick={this.handleChange}
+                        >
+
+                            <option value={-1}>Seleccione una categoria / subcategoria</option>
+                            {this.state.ObjetoCategoria.map((value, index) => {
+
+                                if (this.state.ObjetoCategoria[index].categoria == "ingreso" && this.state.es_ingreso == true) {
+
+                                    return (
+
+                                        <option key={index} value={this.state.ObjetoCategoria[index].id}>
+                                            {value.categoria + "-/" + value.sub_categoria}
+                                        </option>
+                                    );
+                                }
+                                if ((this.state.ObjetoCategoria[index].categoria == "Costo-venta" || this.state.ObjetoCategoria[index].categoria == "Gasto-AOC") && this.state.es_ingreso == false) {
+
+                                    return (
+
+                                        <option key={index} value={this.state.ObjetoCategoria[index].id}>
+                                            {value.categoria + "/" + value.sub_categoria}
+                                        </option>
+                                    );
+                                }
+
+                                /*
+                                 return (
+                                 
+                                     <option key={index}  value={this.state.ObjetoCategoria[index].id}>
+                                         {value.categoria +"/" +value.sub_categoria}
+                                     </option>
+                                 );
+                                 */
+
+
+
+                            })}
                         </select>
                     </div>
                     <div>
