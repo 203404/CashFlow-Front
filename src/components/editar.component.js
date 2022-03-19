@@ -38,17 +38,22 @@ class Editar extends React.Component {
 
   put = () => {
     let url = "http://localhost:3001/api/v1/categoria"; //Url backend
-    axios
-      .put(url, this.state.form)
-      .then((response) => {
-        alert("Datos editados correctamente");
-        window.location = "http://localhost:3000/categorias";
-        console.log(response);
-      })
-      .catch((err) => {
-        alert(err);
-        console.log(err);
-      });
+    if (this.state.form.id != null && this.state.form.categoria != null && this.state.form.sub_categoria != "") {
+      axios
+        .put(url, this.state.form)
+        .then((response) => {
+          alert("Datos editados correctamente");
+          window.location = "http://localhost:3000/categorias";
+          console.log(response);
+        })
+        .catch((err) => {
+          alert(err);
+          console.log(err);
+        });
+    }else{
+      alert('Datos no correctos para actualizar la categoria')
+      window.location="http://localhost:3000/categorias";
+    }
   };
 
   manejadorSumbit = (e) => {

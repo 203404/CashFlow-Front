@@ -41,7 +41,7 @@ export default class Login extends Component {
             }else{
                 alert('Login correcto')
                 localStorage.setItem('id',true)
-                window.location="http://localhost:3000/categorias";
+                window.location="http://localhost:3000/mainMenu";
             }
             console.log(res);
         }).catch((err)=>{
