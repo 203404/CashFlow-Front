@@ -1,12 +1,19 @@
 import { Redirect, Route } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-export default function PrivateRoute(props){
 
-    if(!localStorage.getItem("id")) return <Redirect to="/" />
+function PrivateRoute(props){
 
-    return(
-        <Route {... props}/>
-    ) 
+    
+    if(localStorage.getItem('session')==="admin"){
+        return(
+            <Route {... props}/>
+        ) 
+    }
+    return <Redirect to="/" />
+    
     
 };
+
+export default PrivateRoute;

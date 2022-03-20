@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import PrivateRoute from './PrivateRoute';
 
 
 export default class Login extends Component {
@@ -36,14 +37,15 @@ export default class Login extends Component {
         console.log(this.state.form)
         axios.post(url,this.state.form)
         .then(res=>{
-            if (res.data==='Las credenciales no son correctas'){
-                alert(res.data)
+            console.log(res.status);
+            if (res.status===203){
+                localStorage.removeItem('session')
+                alert(res.data.message)
             }else{
                 alert('Login correcto')
-                localStorage.setItem('id',true)
+                localStorage.setItem('session',res.data.tipo)
                 window.location="http://localhost:3000/mainMenu";
             }
-            console.log(res);
         }).catch((err)=>{
             console.log(err)
         })
