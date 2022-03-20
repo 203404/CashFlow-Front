@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
-import PrivateRoute from './PrivateRoute';
 
 
 export default class Login extends Component {
@@ -19,8 +17,8 @@ export default class Login extends Component {
         e.preventDefault();
     }
 
-    manejadorChange = async e=>{
-        await this.setState({
+    manejadorChange =  e=>{
+        this.setState({
             form:{
                 ...this.state.form,
                 [e.target.name]: e.target.value
@@ -70,9 +68,7 @@ export default class Login extends Component {
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.manejadorBoton}>Submit</button>
-                <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
-                </p>
+    
             </form>
         );
     }

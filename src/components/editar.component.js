@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 const Categorias = [
     {
@@ -38,7 +37,7 @@ class Editar extends React.Component {
 
   put = () => {
     let url = "http://localhost:3001/api/v1/categoria"; //Url backend
-    if (this.state.form.id != null && this.state.form.categoria != null && this.state.form.sub_categoria != "") {
+    if (this.state.form.id !== null && this.state.form.categoria !== null && this.state.form.sub_categoria !== "") {
       axios
         .put(url, this.state.form)
         .then((response) => {

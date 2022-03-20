@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Switch } from "react-router-dom";
 
 const Registro = [
     {
@@ -90,8 +89,8 @@ class Registros extends React.Component {
     postCategoria = () => {
         //Url backend 
         let url = "http://localhost:3001/api/v1/indicador";
-        this.state.num_sem = parseFloat(this.state.num_sem)
-        this.state.monto = parseFloat(this.state.monto)
+        this.setState({num_sem : parseFloat(this.state.num_sem)})
+        this.setState({monto : parseFloat(this.state.monto)})
         var postData = {
             tipo_registro: this.state.tipo_registro,
             num_sem: this.state.num_sem,

@@ -1,6 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 
 
 function PrivateRoute(props){

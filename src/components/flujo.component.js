@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
 const Clasificacion = [
@@ -92,7 +92,7 @@ class Flujo extends React.Component {
         // let result = e.target.value
         // console.log(result)
         // return result;
-        if (e.target.value!=-1){
+        if (e.target.value!==-1){
             axios.get('http://localhost:3001/api/v1/categoria/'+e.target.value)
             .then((res)=>{
                 console.log(res.data)
@@ -109,11 +109,11 @@ class Flujo extends React.Component {
     comprobarTipos(correctos) { //Agregado por Lorenzo
         console.log(this.state.es_ingreso)
         let alerta = "";
-        if (this.state.id_categoria ==null || this.state.id_categoria==-1) {
+        if (this.state.id_categoria ===null || this.state.id_categoria===-1) {
             correctos = false;
             alerta += "Datos ingresados en 'Categoria' no validos\n"
         }
-        if (this.state.es_ingreso == null) {
+        if (this.state.es_ingreso === null) {
 
             correctos = false;
             alerta += "Datos ingresados en '¿Se trata de un Ingreso?' no validos\n"
@@ -165,7 +165,7 @@ class Flujo extends React.Component {
                             <option value={-1}>Seleccione una categoria / subcategoria</option>
                             {this.state.ObjetoCategoria.map((value, index) => {
 
-                                if ((this.state.ObjetoCategoria[index].categoria == "ingreso" ||this.state.ObjetoCategoria[index].categoria == "Ingreso" ) && this.state.es_ingreso == true) {
+                                if ((this.state.ObjetoCategoria[index].categoria=== "ingreso" ||this.state.ObjetoCategoria[index].categoria=== "Ingreso" ) && this.state.es_ingreso=== true) {
 
                                     return (
 
@@ -174,7 +174,7 @@ class Flujo extends React.Component {
                                         </option>
                                     );
                                 }
-                                if ((this.state.ObjetoCategoria[index].categoria == "Costo-venta" || this.state.ObjetoCategoria[index].categoria == "Gasto-AOC") && this.state.es_ingreso == false) {
+                                if ((this.state.ObjetoCategoria[index].categoria === "Costo-venta" || this.state.ObjetoCategoria[index].categoria === "Gasto-AOC") && this.state.es_ingreso === false) {
 
                                     return (
 
