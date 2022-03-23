@@ -11,6 +11,7 @@ import Editar from './components/editar.component'
 import PrivateRoute from './components/PrivateRoute';
 import MainMenu from "./components/mainMenu.component";
 import ReporteFlujo from './components/reporteFlujo';
+import ReporteCuentasCobrar from './components/reporte_cuentasCobrar';
 
 function App() {
   return (<Router>
@@ -68,6 +69,11 @@ function App() {
               path="/reporteFlujo"
               exact
               render={(props) => <ReporteFlujo{...props} />}
+            ></PrivateRoute>
+            <PrivateRoute
+              path="/reporte_Cuentas_Cobrar"
+              exact
+              render={(props) => <ReporteCuentasCobrar{...props} />}
             ></PrivateRoute>
           </Switch>
         </div>
