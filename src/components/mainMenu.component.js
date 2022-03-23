@@ -18,6 +18,9 @@ class MainMenu extends React.Component {
                     <li className="nav-item">
                         <Link className="nav-link" to={"/registros"}>Indicadores</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={"/factura"}>Factura</Link>
+                    </li>
                 </ul>
             </div>
             </div>
