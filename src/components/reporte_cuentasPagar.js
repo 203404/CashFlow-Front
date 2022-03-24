@@ -15,7 +15,7 @@ export default class ReporteCuentasPagar extends React.Component {
       //   sem3:0,
       //   sem4:0
       // }],
-      mes: "Marzo",
+      mes: this.props.mes,
       semFinal: ""
     }
   }

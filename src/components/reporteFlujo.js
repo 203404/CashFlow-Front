@@ -22,13 +22,78 @@ export default class Factura extends React.Component {
     super(props);
     this.state = {
       ObjetoFlujo: [],
-      mes: 3,
+      mes:null,
       ingresoState: [],
     };
   }
-
+  crearMes(){
+    switch (this.props.mes){
+      case "Enero":
+        this.setState({
+          mes:1
+        })
+        break;
+        case "Febrero":
+          this.setState({
+            mes:2
+          })
+          break;
+          case "Marzo":
+        this.setState({
+          mes:3
+        })
+        break;
+        case "Abril":
+        this.setState({
+          mes:4
+        })
+        break;
+        case "Mayo":
+        this.setState({
+          mes:5
+        })
+        break;
+        case "Junio":
+        this.setState({
+          mes:6
+        })
+        break;
+        case "Julio":
+        this.setState({
+          mes:7
+        })
+        break;
+        case "Agosto":
+        this.setState({
+          mes:8
+        })
+        break;
+        case "Septiembre":
+        this.setState({
+          mes:9
+        })
+        break;
+        case "Octubre":
+        this.setState({
+          mes:10
+        })
+        break;
+        case "Noviembre":
+        this.setState({
+          mes:11
+        })
+        break;
+        case "Diciembre":
+        this.setState({
+          mes:12
+        })
+        break;
+    }
+  }
   componentDidMount() {
     this.cargarFlujos();
+    this.crearMes();
+    alert(this.state.mes)
   }
 
   cargarFlujos = () => {

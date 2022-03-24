@@ -24,16 +24,21 @@ export default class Reportes extends React.Component {
           })
         ;
       }
-      
+      constructor(props) {
+        super(props);
+        this.state = {
+          mes:"Abril"
+        };
+      }
     render() {
       
         return (
             
             <div id='divToPrint' className=''>
-                <ReporteBancos></ReporteBancos>
-                <ReporteCuentasCobrar></ReporteCuentasCobrar>
-                <ReporteCuentasPagar></ReporteCuentasPagar>
-                <Factura></Factura>
+                <ReporteBancos mes={this.state.mes}></ReporteBancos>
+                <ReporteCuentasCobrar mes={this.state.mes}></ReporteCuentasCobrar>
+                <ReporteCuentasPagar mes={this.state.mes}></ReporteCuentasPagar>
+                <Factura mes={this.state.mes}></Factura>
                 <button onClick={this.printDocument}>Print</button>
          
             </div>
