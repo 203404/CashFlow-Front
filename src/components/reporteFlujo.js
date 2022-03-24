@@ -20,6 +20,7 @@ export default class Factura extends React.Component {
     this.state = {
       ObjetoFlujo: [],
       mes: 3,
+      ingresoState:[],
     };
   }
 
@@ -77,9 +78,13 @@ export default class Factura extends React.Component {
         utilidad[index] = ingresos[2][index] - gastos[2][index];
         rentabilidad[index] = utilidad [index] * 100 / ingresos [2][index];
       }
-
+      this.setState({
+        ingresoState:ingresos 
+      })
       console.log(utilidad);
       console.log(rentabilidad);
+      console.log(ingresos);
+      console.log(gastos);
     });
   };
   render() {
@@ -99,18 +104,34 @@ export default class Factura extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.ObjetoFlujo.map((value, index) => {
-              return (
-                <tr key={index}>
-                  <td>{value.descrip}</td>
-                  <td>{value.num_sem === 1 ? value.monto : ""}</td>
-                  <td>{value.num_sem === 2 ? value.monto : ""}</td>
-                  <td>{value.num_sem === 3 ? value.monto : ""}</td>
-                  <td>{value.num_sem === 4 ? value.monto : ""}</td>
+            
+                <tr >
+                  <td>Efectivo</td>
+                  <td>{ingresos[0][0]}</td>
+                  <td>{ingresos[0][1]}</td>
+                  <td>{ingresos[0][2]}</td>
+                  <td>{ingresos[0][3]}</td>
+                  <td>{ingresos[0][4]}</td>
                   <td>{}</td>
                 </tr>
-              );
-            })}
+                <tr >
+                  <td>Tarjeta</td>
+                  <td>{ingresos[1][0]}</td>
+                  <td>{ingresos[1][1]}</td>
+                  <td>{ingresos[1][2]}</td>
+                  <td>{ingresos[1][3]}</td>
+                  <td>{ingresos[1][4]}</td>
+                  <td>{}</td>
+                </tr>
+                <tr >
+                  <td>Total</td>
+                  <td>{ingresos[2][0]}</td>
+                  <td>{ingresos[2][1]}</td>
+                  <td>{ingresos[2][2]}</td>
+                  <td>{ingresos[2][3]}</td>
+                  <td>{ingresos[2][4]}</td>
+                  <td>{}</td>
+                </tr>
           </tbody>
         </table>
         <br></br>
