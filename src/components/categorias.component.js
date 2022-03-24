@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";//importar axios
-import Navbar from "./navbar.component";
+import { Link } from "react-router-dom";
 
 const Clasificacion = [
   {
@@ -144,6 +144,10 @@ class Categorias extends React.Component {
             </tbody>
           </table>
         </div>
+        <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import Factura from './reporteFlujo';
 import ReporteCuentasCobrar from './reporte_cuentasCobrar';
 import ReporteCuentasPagar from './reporte_cuentasPagar';
 import ReporteBancos from './reporte_bancos';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -129,6 +129,10 @@ export default class Reportes extends React.Component {
           <ReporteCuentasPagar mes={this.state.mes}></ReporteCuentasPagar>
           <Factura mes={this.state.mes}></Factura>
           <button onClick={this.printDocument}>Print</button>
+          <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
 
         </div>
 
@@ -152,6 +156,10 @@ export default class Reportes extends React.Component {
                 ))}
               </select>
             </h2>
+            <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
         </div>
       )
     }

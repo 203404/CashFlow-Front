@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Navbar from "./navbar.component";
+import { Link } from "react-router-dom";
 
 const Clasificacion = [
     {
@@ -250,6 +250,10 @@ class Flujo extends React.Component {
                         })}
                     </tbody>
                 </table>
+                <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
             </div>
         );
     }

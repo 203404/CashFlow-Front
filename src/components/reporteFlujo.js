@@ -22,7 +22,7 @@ export default class Factura extends React.Component {
     super(props);
     this.state = {
       ObjetoFlujo: [],
-      mes:null,
+      mes:3,
       ingresoState: [],
     };
   }
@@ -266,11 +266,11 @@ export default class Factura extends React.Component {
             </tr>
             <tr>
               <td>margen de rentabilidad</td>
-              <td>{rentabilidad[0]}%</td>
-              <td>{rentabilidad[1]}%</td>
-              <td>{rentabilidad[2]}%</td>
-              <td>{rentabilidad[3]}%</td>
-              <td>{rentabilidad[4]}%</td>           
+              <td>{rentabilidad[0].toFixed(2)}%</td>
+              <td>{rentabilidad[1].toFixed(2)}%</td>
+              <td>{rentabilidad[2].toFixed(2)}%</td>
+              <td>{rentabilidad[3].toFixed(2)}%</td>
+              <td>{rentabilidad[4].toFixed(2)}%</td>           
             </tr>
           </tbody>
         </table>

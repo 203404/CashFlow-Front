@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Categorias = [
     {
@@ -158,6 +159,10 @@ class Editar extends React.Component {
             Guardar
           </button>
         </form>
+        <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
       </div>
     );
   }

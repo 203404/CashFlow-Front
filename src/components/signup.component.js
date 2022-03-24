@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 export default class SignUp extends Component {
     render() {
         return (
@@ -17,6 +19,10 @@ export default class SignUp extends Component {
                     <input type="text" className="form-control" placeholder="Rol" />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <Link to={"/mainMenu"}>
+            <button className="btn btn-secondary">Menu principal</button>
+
+          </Link>
                 
             </form>
         );

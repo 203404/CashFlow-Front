@@ -10,6 +10,9 @@ function PrivateRoute(props){
             <Route {... props}/>
         ) 
     }
+    if(localStorage.getItem('session')==="conta"){
+        
+    }
     return <Redirect to="/" />
     
     
