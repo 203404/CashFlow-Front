@@ -1,6 +1,5 @@
 import React from "react";
 import {  Link } from "react-router-dom";
-
 class MainMenu extends React.Component {
 
     render() {
@@ -21,6 +20,7 @@ class MainMenu extends React.Component {
                     <li className="nav-item">
                         <Link className="nav-link" to={"/reportes"}>Reportes</Link>
                     </li>
+                    
                 </ul>
             </div>
             </div>

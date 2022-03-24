@@ -15,13 +15,14 @@ export default class ReporteCuentasCobrar extends React.Component {
       //   sem3:0,
       //   sem4:0
       // }],
-      mes: this.props.mes,
+      mes:"",
       semFinal: ""
     }
   }
   
   componentDidMount() {
     this.cargarIndicadores();
+    this.setState({mes:this.props.mes})
   }
 
   cargarIndicadores = () => {

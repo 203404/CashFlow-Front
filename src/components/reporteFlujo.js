@@ -93,7 +93,6 @@ export default class Factura extends React.Component {
   componentDidMount() {
     this.cargarFlujos();
     this.crearMes();
-    alert(this.state.mes)
   }
 
   cargarFlujos = () => {
