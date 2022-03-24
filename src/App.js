@@ -8,6 +8,7 @@ import Categorias from "./components/categorias.component";
 import Flujo from "./components/flujo.component";
 import Registros from './components/registros.component';
 import Editar from './components/editar.component'
+import Reportes from './components/reportes.component';
 import PrivateRoute from './components/PrivateRoute';
 import MainMenu from "./components/mainMenu.component";
 import ReporteFlujo from './components/reporteFlujo';
@@ -86,6 +87,11 @@ function App() {
               path="/reporte_Bancos"
               exact
               render={(props) => <ReporteBancos{...props} />}
+            ></Route>
+            <Route
+              path="/reportes"
+              exact
+              render={(props) => <Reportes{...props} />}
             ></Route>
           </Switch>
         </div>
