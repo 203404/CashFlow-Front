@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import Navbar from "./navbar.component";
 
 let ingresos = [
   [0, 0, 0, 0, 0],
@@ -96,7 +97,7 @@ export default class Factura extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div><Navbar></Navbar>
         <h1>Flujo efectivo</h1>
         <h6>Ingresos</h6>
         <table class="table table-bordered">

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Navbar from "./navbar.component";
 
 const Registro = [
     {
@@ -244,7 +245,7 @@ class Registros extends React.Component {
     }
     render() {
         return (
-            <div className="any">
+            <div className="any"><Navbar></Navbar>
                 <div>
                     <div>
                         <h2><text>{'Registro de \t'}</text>

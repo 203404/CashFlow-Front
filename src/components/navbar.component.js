@@ -15,6 +15,9 @@ function Navbar() {
               <li>
                 <Link className="nav-link" to={"/registros"}>Indicadores</Link>
               </li>
+              <li>
+                <Link className="nav-link" to={"/reporteFlujo"}>Factura</Link>
+              </li>
             </ul>
           </div>
         </div>

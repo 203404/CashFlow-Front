@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Navbar from "./navbar.component";
 
 const Clasificacion = [
     {
@@ -134,7 +135,7 @@ class Flujo extends React.Component {
 
     render() {
         return (
-            <div className="any">
+            <div className="any"><Navbar></Navbar>
                 <div>
                     <div>
                         <h2>¿Se trata de un ingreso?</h2>
