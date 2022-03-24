@@ -6,7 +6,7 @@ import ReporteBancos from './reporte_bancos';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { useReactToPrint } from 'react-to-print';
+
 
 const Mes = [
   {
