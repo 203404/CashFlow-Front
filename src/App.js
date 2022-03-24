@@ -12,6 +12,8 @@ import PrivateRoute from './components/PrivateRoute';
 import MainMenu from "./components/mainMenu.component";
 import ReporteFlujo from './components/reporteFlujo';
 import ReporteCuentasCobrar from './components/reporte_cuentasCobrar';
+import ReporteCuentasPagar from './components/reporte_cuentasPagar';
+import ReporteBancos from './components/reporte_bancos';
 
 function App() {
   return (<Router>
@@ -74,6 +76,16 @@ function App() {
               path="/reporte_Cuentas_Cobrar"
               exact
               render={(props) => <ReporteCuentasCobrar{...props} />}
+            ></PrivateRoute>
+            <PrivateRoute
+              path="/reporte_Cuentas_Pagar"
+              exact
+              render={(props) => <ReporteCuentasPagar{...props} />}
+            ></PrivateRoute>
+            <PrivateRoute
+              path="/reporte_Bancos"
+              exact
+              render={(props) => <ReporteBancos{...props} />}
             ></PrivateRoute>
           </Switch>
         </div>
