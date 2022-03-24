@@ -27,66 +27,66 @@ function App() {
               render={(props) => <Login {...props} />}
             ></Route>
             {/* <Route exact path='/' component={Login} /> */}
-            <PrivateRoute
+            <Route
                 path="/sign-up"
                 exact
                 render={(props) => <SignUp{...props} />}
-              ></PrivateRoute>
-            {/* <PrivateRoute path="/sign-up" component={SignUp} /> */}
+              ></Route>
+            {/* <Route path="/sign-up" component={SignUp} /> */}
 
-            <PrivateRoute
+            <Route
               path="/categorias"
               exact
               render={(props) => <Categorias{...props} />}
-            ></PrivateRoute>
-            {/* <PrivateRoute path="/categorias" component={Categorias} /> */}
+            ></Route>
+            {/* <Route path="/categorias" component={Categorias} /> */}
 
-            <PrivateRoute
+            <Route
               path="/flujo"
               exact
               render={(props) => <Flujo{...props} />}
-            ></PrivateRoute>
-            {/* <PrivateRoute path="/flujo" component={Flujo} /> */}
+            ></Route>
+            {/* <Route path="/flujo" component={Flujo} /> */}
 
-            <PrivateRoute
+            <Route
               path="/registros"
               exact
               render={(props) => <Registros{...props} />}
-            ></PrivateRoute>
-            {/* <PrivateRoute path="/registros" component={Registros} /> */}
+            ></Route>
+            {/* <Route path="/registros" component={Registros} /> */}
 
-            <PrivateRoute
+            <Route
               path="/editar/:id"
               exact
               render={(props) => <Editar{...props} />}
-            ></PrivateRoute>
-            {/* <PrivateRoute path="/editar:id" component={editar} /> */}
-            <PrivateRoute
+            ></Route>
+            {/* <Route path="/editar:id" component={editar} /> */}
+            <Route
               path="/mainMenu"
               exact
               render={(props) => <MainMenu{...props} />}
-            ></PrivateRoute>
-            {/* <PrivateRoute path="/mainMenu:id" component={mainMenu} /> */}
-            <PrivateRoute
+            ></Route>
+            {/* <Route path="/mainMenu:id" component={mainMenu} /> */}
+            <Route
               path="/reporteFlujo"
               exact
               render={(props) => <ReporteFlujo{...props} />}
-            ></PrivateRoute>
-            <PrivateRoute
+            ></Route>
+            <Route
               path="/reporte_Cuentas_Cobrar"
               exact
               render={(props) => <ReporteCuentasCobrar{...props} />}
-            ></PrivateRoute>
-            <PrivateRoute
+            ></Route>
+            <Route
               path="/reporte_Cuentas_Pagar"
               exact
               render={(props) => <ReporteCuentasPagar{...props} />}
-            ></PrivateRoute>
-            <PrivateRoute
+            ></Route>
+            <Route
               path="/reporte_Bancos"
               exact
               render={(props) => <ReporteBancos{...props} />}
-            ></PrivateRoute>
+            ></Route>
           </Switch>
         </div>
       </div>

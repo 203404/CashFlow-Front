@@ -5,14 +5,16 @@ let ingresos = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
 ];
 let gastos = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
 ];
-let utilidad = [0,0,0,0,0];
-let rentabilidad = [0,0,0,0,0];
+let utilidad = [0, 0, 0, 0, 0];
+let rentabilidad = [0, 0, 0, 0, 0];
 
 export default class Factura extends React.Component {
   constructor(props) {
@@ -20,7 +22,7 @@ export default class Factura extends React.Component {
     this.state = {
       ObjetoFlujo: [],
       mes: 3,
-      ingresoState:[],
+      ingresoState: [],
     };
   }
 
@@ -64,27 +66,32 @@ export default class Factura extends React.Component {
             ingresos[1][semana] += cantidad;
           }
           ingresos[2][semana] = ingresos[0][semana] + ingresos[1][semana];
-          if (element.categoria == "Costo-venta") {
+          if (element.categoria === "Costo-venta") {
             gastos[0][semana] += cantidad;
           }
-          if (element.categoria == "Gasto-AOC") {
+          if (element.categoria === "Gasto-AOC") {
             gastos[1][semana] += cantidad;
           }
           gastos[2][semana] = gastos[0][semana] + gastos[1][semana];
-          
-        }      
+        }
       }
+      for (let i = 0; i < 3; i++) {
+        for (let index = 0; index < 4; index++) {
+          ingresos[i][4] += ingresos[i][index];
+        }
+
+        for (let index = 0; index < 4; index++) {
+          gastos[i][4] += gastos[i][index];
+        }
+      }
+
       for (let index = 0; index < 5; index++) {
         utilidad[index] = ingresos[2][index] - gastos[2][index];
-        rentabilidad[index] = utilidad [index] * 100 / ingresos [2][index];
+        rentabilidad[index] = (utilidad[index] * 100) / ingresos[2][index];
       }
       this.setState({
-        ingresoState:ingresos 
-      })
-      console.log(utilidad);
-      console.log(rentabilidad);
-      console.log(ingresos);
-      console.log(gastos);
+        ingresoState: ingresos,
+      });
     });
   };
   render() {
@@ -104,34 +111,30 @@ export default class Factura extends React.Component {
             </tr>
           </thead>
           <tbody>
-            
-                <tr >
-                  <td>Efectivo</td>
-                  <td>{ingresos[0][0]}</td>
-                  <td>{ingresos[0][1]}</td>
-                  <td>{ingresos[0][2]}</td>
-                  <td>{ingresos[0][3]}</td>
-                  <td>{ingresos[0][4]}</td>
-                  <td>{}</td>
-                </tr>
-                <tr >
-                  <td>Tarjeta</td>
-                  <td>{ingresos[1][0]}</td>
-                  <td>{ingresos[1][1]}</td>
-                  <td>{ingresos[1][2]}</td>
-                  <td>{ingresos[1][3]}</td>
-                  <td>{ingresos[1][4]}</td>
-                  <td>{}</td>
-                </tr>
-                <tr >
-                  <td>Total</td>
-                  <td>{ingresos[2][0]}</td>
-                  <td>{ingresos[2][1]}</td>
-                  <td>{ingresos[2][2]}</td>
-                  <td>{ingresos[2][3]}</td>
-                  <td>{ingresos[2][4]}</td>
-                  <td>{}</td>
-                </tr>
+            <tr>
+              <td>Efectivo</td>
+              <td>{ingresos[0][0]}</td>
+              <td>{ingresos[0][1]}</td>
+              <td>{ingresos[0][2]}</td>
+              <td>{ingresos[0][3]}</td>
+              <td>{ingresos[0][4]}</td>
+            </tr>
+            <tr>
+              <td>Tarjeta</td>
+              <td>{ingresos[1][0]}</td>
+              <td>{ingresos[1][1]}</td>
+              <td>{ingresos[1][2]}</td>
+              <td>{ingresos[1][3]}</td>
+              <td>{ingresos[1][4]}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>{ingresos[2][0]}</td>
+              <td>{ingresos[2][1]}</td>
+              <td>{ingresos[2][2]}</td>
+              <td>{ingresos[2][3]}</td>
+              <td>{ingresos[2][4]}</td>
+            </tr>
           </tbody>
         </table>
         <br></br>
@@ -148,20 +151,30 @@ export default class Factura extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.ObjetoFlujo.map((value, index) => {
-              if (value.mes === this.state.mes) {
-                return (
-                  <tr key={index}>
-                    <td>{value.descrip}</td>
-                    <td>{value.num_sem === 1 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 2 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 3 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 4 ? value.monto : "---"}</td>
-                    <td>{}</td>
-                  </tr>
-                );
-              }
-            })}
+            <tr>
+              <td>Costos de ventas</td>
+              <td>{gastos[0][0]}</td>
+              <td>{gastos[0][1]}</td>
+              <td>{gastos[0][2]}</td>
+              <td>{gastos[0][3]}</td>
+              <td>{gastos[0][4]}</td>
+            </tr>
+            <tr>
+              <td>Gastos fijos Operativos</td>
+              <td>{gastos[1][0]}</td>
+              <td>{gastos[1][1]}</td>
+              <td>{gastos[1][2]}</td>
+              <td>{gastos[1][3]}</td>
+              <td>{gastos[1][4]}</td>
+            </tr>
+            <tr>
+              <td>Total Gastos</td>
+              <td>{gastos[2][0]}</td>
+              <td>{gastos[2][1]}</td>
+              <td>{gastos[2][2]}</td>
+              <td>{gastos[2][3]}</td>
+              <td>{gastos[2][4]}</td>
+            </tr>
           </tbody>
         </table>
         <br></br>
@@ -178,20 +191,22 @@ export default class Factura extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.ObjetoFlujo.map((value, index) => {
-              if (value.mes === this.state.mes) {
-                return (
-                  <tr key={index}>
-                    <td>{value.descrip}</td>
-                    <td>{value.num_sem === 1 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 2 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 3 ? value.monto : "---"}</td>
-                    <td>{value.num_sem === 4 ? value.monto : "---"}</td>
-                    <td>{}</td>
-                  </tr>
-                );
-              }
-            })}
+            <tr>
+              <td>total utilidad</td>
+              <td>{utilidad[0]}</td>
+              <td>{utilidad[1]}</td>
+              <td>{utilidad[2]}</td>
+              <td>{utilidad[3]}</td>
+              <td>{utilidad[4]}</td>           
+            </tr>
+            <tr>
+              <td>margen de rentabilidad</td>
+              <td>{rentabilidad[0]}%</td>
+              <td>{rentabilidad[1]}%</td>
+              <td>{rentabilidad[2]}%</td>
+              <td>{rentabilidad[3]}%</td>
+              <td>{rentabilidad[4]}%</td>           
+            </tr>
           </tbody>
         </table>
       </div>
