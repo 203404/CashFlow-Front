@@ -93,7 +93,7 @@ class Categorias extends React.Component {
 
   render() {
     return (
-      <div className="any"><Navbar></Navbar>
+      <div className="any">
         <div className="formC">
           <div>
             <h2>Categorias</h2>

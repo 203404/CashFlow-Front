@@ -97,7 +97,7 @@ export default class Factura extends React.Component {
   };
   render() {
     return (
-      <div><Navbar></Navbar>
+      <div>
         <h1>Flujo efectivo</h1>
         <h6>Ingresos</h6>
         <table class="table table-bordered">

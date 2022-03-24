@@ -135,7 +135,7 @@ class Flujo extends React.Component {
 
     render() {
         return (
-            <div className="any"><Navbar></Navbar>
+            <div className="any">
                 <div>
                     <div>
                         <h2>¿Se trata de un ingreso?</h2>
