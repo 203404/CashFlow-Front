@@ -124,17 +124,17 @@ export default class Factura extends React.Component {
           if (dia > 21) {
             semana = 3;
           }
-          if (element.sub_categoria === "Efectivo") {
+          if (element.sub_categoria === "EFECTIVO") {
             ingresos[0][semana] += cantidad;
           }
-          if (element.sub_categoria === "deposito") {
+          if (element.sub_categoria === "DEPOSITO") {
             ingresos[1][semana] += cantidad;
           }
           ingresos[2][semana] = ingresos[0][semana] + ingresos[1][semana];
-          if (element.categoria === "Costo-venta") {
+          if (element.categoria === "COSTO-VENTA") {
             gastos[0][semana] += cantidad;
           }
-          if (element.categoria === "Gasto-AOC") {
+          if (element.categoria === "GASTO-AOC") {
             gastos[1][semana] += cantidad;
           }
           gastos[2][semana] = gastos[0][semana] + gastos[1][semana];
@@ -178,27 +178,27 @@ export default class Factura extends React.Component {
           <tbody>
             <tr>
               <td>Efectivo</td>
-              <td>{ingresos[0][0]}</td>
-              <td>{ingresos[0][1]}</td>
-              <td>{ingresos[0][2]}</td>
-              <td>{ingresos[0][3]}</td>
-              <td>{ingresos[0][4]}</td>
+              <td>{'$'+ingresos[0][0].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[0][1].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[0][2].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[0][3].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[0][4].toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td>Tarjeta</td>
-              <td>{ingresos[1][0]}</td>
-              <td>{ingresos[1][1]}</td>
-              <td>{ingresos[1][2]}</td>
-              <td>{ingresos[1][3]}</td>
-              <td>{ingresos[1][4]}</td>
+              <td>{'$'+ingresos[1][0].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[1][1].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[1][2].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[1][3].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[1][4].toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td>Total</td>
-              <td>{ingresos[2][0]}</td>
-              <td>{ingresos[2][1]}</td>
-              <td>{ingresos[2][2]}</td>
-              <td>{ingresos[2][3]}</td>
-              <td>{ingresos[2][4]}</td>
+              <td>{'$'+ingresos[2][0].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[2][1].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[2][2].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[2][3].toLocaleString('en-US')}</td>
+              <td>{'$'+ingresos[2][4].toLocaleString('en-US')}</td>
             </tr>
           </tbody>
         </table>
@@ -218,27 +218,27 @@ export default class Factura extends React.Component {
           <tbody>
             <tr>
               <td>Costos de ventas</td>
-              <td>{gastos[0][0]}</td>
-              <td>{gastos[0][1]}</td>
-              <td>{gastos[0][2]}</td>
-              <td>{gastos[0][3]}</td>
-              <td>{gastos[0][4]}</td>
+              <td>{'$'+gastos[0][0].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[0][1].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[0][2].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[0][3].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[0][4].toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td>Gastos fijos Operativos</td>
-              <td>{gastos[1][0]}</td>
-              <td>{gastos[1][1]}</td>
-              <td>{gastos[1][2]}</td>
-              <td>{gastos[1][3]}</td>
-              <td>{gastos[1][4]}</td>
+              <td>{'$'+gastos[1][0].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[1][1].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[1][2].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[1][3].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[1][4].toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td>Total Gastos</td>
-              <td>{gastos[2][0]}</td>
-              <td>{gastos[2][1]}</td>
-              <td>{gastos[2][2]}</td>
-              <td>{gastos[2][3]}</td>
-              <td>{gastos[2][4]}</td>
+              <td>{'$'+gastos[2][0].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[2][1].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[2][2].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[2][3].toLocaleString('en-US')}</td>
+              <td>{'$'+gastos[2][4].toLocaleString('en-US')}</td>
             </tr>
           </tbody>
         </table>
@@ -258,19 +258,19 @@ export default class Factura extends React.Component {
           <tbody>
             <tr>
               <td>total utilidad</td>
-              <td>{utilidad[0]}</td>
-              <td>{utilidad[1]}</td>
-              <td>{utilidad[2]}</td>
-              <td>{utilidad[3]}</td>
-              <td>{utilidad[4]}</td>           
+              <td>{'$'+utilidad[0].toLocaleString('en-US')}</td>
+              <td>{'$'+utilidad[1].toLocaleString('en-US')}</td>
+              <td>{'$'+utilidad[2].toLocaleString('en-US')}</td>
+              <td>{'$'+utilidad[3].toLocaleString('en-US')}</td>
+              <td>{'$'+utilidad[4].toLocaleString('en-US')}</td>           
             </tr>
             <tr>
               <td>margen de rentabilidad</td>
-              <td>{rentabilidad[0].toFixed(2)}%</td>
-              <td>{rentabilidad[1].toFixed(2)}%</td>
-              <td>{rentabilidad[2].toFixed(2)}%</td>
-              <td>{rentabilidad[3].toFixed(2)}%</td>
-              <td>{rentabilidad[4].toFixed(2)}%</td>           
+              <td>{Math.round(rentabilidad[0])}%</td>
+              <td>{Math.round(rentabilidad[1])}%</td>
+              <td>{Math.round(rentabilidad[2])}%</td>
+              <td>{Math.round(rentabilidad[3])}%</td>
+              <td>{Math.round(rentabilidad[4])}%</td>           
             </tr>
           </tbody>
         </table>

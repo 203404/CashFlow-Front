@@ -166,7 +166,7 @@ class Flujo extends React.Component {
                             <option value={-1}>Seleccione una categoria / subcategoria</option>
                             {this.state.ObjetoCategoria.map((value, index) => {
 
-                                if ((this.state.ObjetoCategoria[index].categoria=== "ingreso" ||this.state.ObjetoCategoria[index].categoria=== "Ingreso" ) && this.state.es_ingreso=== true) {
+                                if ((this.state.ObjetoCategoria[index].categoria=== "INGRESO" ||this.state.ObjetoCategoria[index].categoria=== "Ingreso" ) && this.state.es_ingreso=== true) {
 
                                     return (
 
@@ -175,7 +175,7 @@ class Flujo extends React.Component {
                                         </option>
                                     );
                                 }
-                                if ((this.state.ObjetoCategoria[index].categoria === "Costo-venta" || this.state.ObjetoCategoria[index].categoria === "Gasto-AOC") && this.state.es_ingreso === false) {
+                                if ((this.state.ObjetoCategoria[index].categoria === "COSTO-VENTA" || this.state.ObjetoCategoria[index].categoria === "GASTO-AOC") && this.state.es_ingreso === false) {
 
                                     return (
 

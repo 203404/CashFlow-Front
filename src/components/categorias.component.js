@@ -43,7 +43,6 @@ class Categorias extends React.Component {
   postCategoria = () => {
     let url = "http://localhost:3001/api/v1/categorias"; //Url backend
     var postData = {
-      clasificacion: this.state.clasificacion,
       categoria: this.state.categoria,
       sub_categoria: this.state.sub_categoria,
     }
@@ -100,7 +99,7 @@ class Categorias extends React.Component {
             <select
               name="categoria"
               id="txtCategoria"
-              onClick={(e) => e.target.value === '0' ? this.setState({ categoria: "ingreso" }) : (e.target.value === '1' ? this.setState({ categoria: "Costo-venta" }) : (e.target.value === '2' ? this.setState({ categoria: "Gasto-AOC" }) : (e.target.value === '-1' ? this.setState({ categoria: null }) : null)))}
+              onClick={(e) => e.target.value === '0' ? this.setState({ categoria: "INGRESO" }) : (e.target.value === '1' ? this.setState({ categoria: "COSTO-VENTA" }) : (e.target.value === '2' ? this.setState({ categoria: "GASTO-AOC" }) : (e.target.value === '-1' ? this.setState({ categoria: null }) : null)))}
             >
               <option value={-1}>Seleccione una categoria</option>
               {Clasificacion.map((item, i) => (
